@@ -4,6 +4,8 @@ import ReactDom from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/vedio_list';
+import VedioDetail from './components/vedio-detail';
+
 // Create a new Component .
 // This component should produce some HTML
 
@@ -15,17 +17,26 @@ class App extends Component {
     constructor(props){
         super(props);
 
-        this.state = { vedios: [] };
+        this.state = {
+            vedios: [],
+            selectedVideo: null
+         };
 
-        YTSearch({key: API_KEY, term: 'jay'},(data)=>{
-            this.setState({vedios: data})
+        YTSearch({key: API_KEY, term: 'saanju'},(vedios)=>{
+            this.setState({
+                vedios: vedios,
+                selectedVideo: vedios[0]
+            });
         });
     }
     render(){
         return (
             <div>
             <SearchBar />
-            <VideoList videos = {this.state.vedios} />
+            <VedioDetail video = {this.state.selectedVideo}/>
+            <VideoList 
+            onVideoSelect = {selectedVideo => this.setState({selectedVideo})}            
+            videos = {this.state.vedios} />
             </div>
         );
 
