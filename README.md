@@ -23,3 +23,6 @@ Click [here](https://github.com/StephenGrider/ReactStarter/releases) then downlo
 > npm install
 > npm start
 ```
+
+#### For My work you can switch To newReact branch
+It is basic layout for further projects whereas newReact is for Youtube search and vedio App 
